@@ -4,6 +4,9 @@
     <title>Demo</title>
 </head>
 <body>
-   <h1><?php echo "Hello World"; ?></h1>
+    <?php
+     $greeting = "Hello";
+    ?>
+   <h1><?php echo "$greeting World"; ?></h1>
 </body>
 </html>
