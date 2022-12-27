@@ -16,17 +16,11 @@
 
 <body>
 <?php
-      $name = "Dark Matter";
-
-      $read = true;
-
-      if ($read) {
-         $message = "You have read $name";
-      } else {
-        $message = "You have not read $name";
-      }
+    $gretting = "Hello";
+    
     ?>
-   <h1> <?= $message ?></h1>
+      
+    <h1><?php echo "$gretting World"; ?></h1>
 </body>
 
 </html>
