@@ -29,23 +29,58 @@
         ]
     ];
 
-    function filterAuthorBy($books, $author)
-    {
+    // one way
+    //    $filterAuthorBy = function ($books, $author)
+//     {
 
-        $filtersBooks = [];
+//         $filtersBooks = [];
 
-        foreach ($books as $book) {
-            if ($book['author'] === $author) {
-                $filtersBooks[] = $book;
-            }
-        }
+//         foreach ($books as $book) {
+//             if ($book['author'] === $author) {
+//                 $filtersBooks[] = $book;
+//             }
+//         }
 
-        return $filtersBooks;
-    }
+//         return $filtersBooks;
+//     };
+
+
+
+
+//     $filtersBooks = $filterAuthorBy($books, 'Andy Weir');
+
+
+// two way
+    // function filter($items, $fn)
+    // {
+
+    //     $filteredItems = [];
+
+    //     foreach ($items as $item) {
+    //         if ($fn($item)) {
+    //             $filteredItems[] = $item;
+    //         }
+    //     }
+
+    //     return $filteredItems;
+    // }
+
+
+
+
+    // $filtersBooks = filter($books, function($book){ 
+    //     return $book['releaseYear'] < 2000;
+
+    // });
+
+       $filtersBooks = array_filter($books, function($book){ 
+         return $book['author'] === 'Andy Weir';
+
+       });
     ?>
 
     <ul>
-        <?php foreach (filterAuthorBy($books, 'Andy Weir') as $book) : ?>
+        <?php foreach ($filtersBooks as $book) : ?>
             <li>
                 <a href="<?= $book['purchaseUrl'] ?>">
                     <?= $book['name'] ?> (<?= $book['releaseYear'] ?>) By (<?= $book['author'] ?>)
