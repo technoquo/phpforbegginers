@@ -1,27 +1,25 @@
 <?php
-$books = [
-    [
-        'name' => 'Do Androids Dream of Electric Sheep',
-        'author' => 'Philip K. Dick',
-        'releaseYear' => 1968,
-        'purchaseUrl' => 'http://example.com'
-    ],
-    [
-        'name' => 'Project Hail Mary',
-        'author' => 'Andy Weir',
-        'releaseYear' => 2021,
-        'purchaseUrl' => 'http://example.com'
-    ],
-    [
-        'name' => 'Project Hail Mary 2 part',
-        'author' => 'Andy Weir',
-        'releaseYear' => 2022,
-        'purchaseUrl' => 'http://example.com'
-    ]
-];
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-$filtersBooks = array_filter($books, function ($book) {
-    return $book['author'] === 'Andy Weir';
-});
 
-require 'index.view.php';
+require 'functions.php';
+
+require 'Database.php';
+
+$config = require('config.php');
+
+//require 'route.php';
+
+
+$db = new DataBase($config['database']);
+
+$id = $_GET['id'];
+
+$query = "select * from posts where id = :id";
+
+$posts = $db->query($query,[':id' => $id])->fetchAll();
+
+dd($posts);
+
